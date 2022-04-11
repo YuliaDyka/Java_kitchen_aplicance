@@ -34,46 +34,40 @@ public class Main {
         kitchenAppliances.add(foodProcessor);
         kitchenAppliances.add(oven);
 
-        for(KitchenAppliance i: kitchenAppliances) {
+        for(KitchenAppliance i: kitchenAppliances){
             System.out.println(i.show());
         } ;
+
+        Manager manager = new Manager();
+
         System.out.println(" ----------------------------------------- " + "\n");
         System.out.println("Please enter the name of the dish: ");
         String typeDish = br.readLine();
 
-        var output =  kitchenAppliances.stream()
-                .filter(k -> k.types.contains(typeDish))
-                .sorted(Comparator.comparing(KitchenAppliance::getPower))
-                .collect(Collectors.toList());;
-
-       System.out.println("----Ascending by power----");
-       for(KitchenAppliance item: output) {
-           System.out.println(item.show());
-       }
+        List<KitchenAppliance> newSearchByName = manager.searchByNameSortedPawerAsc(kitchenAppliances, typeDish);
+        System.out.println("----Ascending by power----");
+        for(KitchenAppliance item: newSearchByName){
+            System.out.println(item.show());
+        }
 
         System.out.println("----Descending by power----");
-        output =  kitchenAppliances.stream()
-                .sorted(Comparator.comparing(KitchenAppliance::getPower).reversed())
-                .collect(Collectors.toList());
-        for(KitchenAppliance item: output){
+        List<KitchenAppliance> sortByPowerDesc = manager.searchByNameSortedPowerDesc(kitchenAppliances, typeDish);
+        for(KitchenAppliance item: sortByPowerDesc){
             System.out.println(item.show());
         }
 
         System.out.println("------------");
         System.out.println("----Sorting by price ascend----");
-        var sortAscByPrice =  kitchenAppliances.stream()
-                .sorted(Comparator.comparing(KitchenAppliance::getPrice))
-                .collect(Collectors.toList());
-        for(KitchenAppliance i: sortAscByPrice) {
+        List<KitchenAppliance> sortByPriceAscList = manager.sortingByPriceAsc(kitchenAppliances);
+
+        for(KitchenAppliance i: sortByPriceAscList) {
             System.out.println(i.show());
         }
 
         System.out.println("------------");
         System.out.println("----Sorting by price descend----");
-        var sortDescByPrice =  kitchenAppliances.stream()
-                .sorted(Comparator.comparing(KitchenAppliance::getPrice).reversed())
-                .collect(Collectors.toList());
-        for(KitchenAppliance i: sortDescByPrice) {
+        List<KitchenAppliance> sortByPriceDesc = manager.sortingByPriceDesc(kitchenAppliances);
+        for(KitchenAppliance i: sortByPriceDesc) {
             System.out.println(i.show());
         }
     }
