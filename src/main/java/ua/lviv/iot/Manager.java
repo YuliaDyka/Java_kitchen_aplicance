@@ -1,4 +1,4 @@
-package com.company;
+package ua.lviv.iot;
 
 import java.util.ArrayList;
 import java.util.Comparator;
