@@ -1,14 +1,18 @@
-package com.company;
+package ua.lviv.iot;
 
-import java.io.IOException;
-import java.util.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
-
-    public static void main(String[] args) throws IOException {
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws IOException {
         System.out.println("-----Lab2------");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -68,7 +72,6 @@ public class Main {
         System.out.println("----Sorting by price descend----");
         List<KitchenAppliance> sortByPriceDesc = manager.sortingByPriceDesc(kitchenAppliances);
         for(KitchenAppliance i: sortByPriceDesc) {
-            System.out.println(i.show());
-        }
+            System.out.println(i.show());}
     }
 }
