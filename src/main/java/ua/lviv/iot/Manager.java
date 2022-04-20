@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Manager {
-    public List<KitchenAppliance> searchByNameSortedPawerAsc(List<KitchenAppliance> kitchenAppliances, String typeDish){
+    public List<KitchenAppliance> searchByNameSortedPowerAsc(List<KitchenAppliance> kitchenAppliances, String typeDish){
         List<KitchenAppliance> searchByNameList  = kitchenAppliances.stream()
                 .filter(k -> k.types.contains(typeDish))
                 .sorted(Comparator.comparing(KitchenAppliance::getPower))
@@ -18,7 +18,7 @@ public class Manager {
 
     public List<KitchenAppliance> searchByNameSortedPowerDesc(List<KitchenAppliance> kitchenAppliances, String typeDish){
         List<KitchenAppliance> searchByNameList  = kitchenAppliances.stream()
-                .filter(apl -> apl.name.contains(typeDish))
+                .filter(apl -> apl.types.contains(typeDish))
                 .sorted(Comparator.comparing(KitchenAppliance::getPower).reversed())
                 .collect(Collectors.toList());
 

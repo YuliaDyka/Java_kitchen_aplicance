@@ -48,7 +48,7 @@ public class App
         System.out.println("Please enter the name of the dish: ");
         String typeDish = br.readLine();
 
-        List<KitchenAppliance> newSearchByName = manager.searchByNameSortedPawerAsc(kitchenAppliances, typeDish);
+        List<KitchenAppliance> newSearchByName = manager.searchByNameSortedPowerAsc(kitchenAppliances, typeDish);
         System.out.println("----Ascending by power----");
         for(KitchenAppliance item: newSearchByName){
             System.out.println(item.show());
