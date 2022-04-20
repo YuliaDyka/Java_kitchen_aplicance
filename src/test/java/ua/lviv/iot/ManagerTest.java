@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class ManagerTest {
     List<KitchenAppliance> kitchenAppliances;
@@ -19,7 +21,6 @@ class ManagerTest {
 
         var mixerDishes = new ArrayList<String>();
         mixerDishes.add("Cookie");
-        mixerDishes.add("Cake");
         var foodProcessorDishes = new ArrayList<String>();
         foodProcessorDishes.add("Cookie");
         foodProcessorDishes.add("Cake");
@@ -46,48 +47,38 @@ class ManagerTest {
 
     @org.junit.jupiter.api.Test
     void searchByNameSortedPowerAsc() {
-        Iterable<KitchenAppliance> expected = new ArrayList<KitchenAppliance>();
-        Iterable<KitchenAppliance> result = manager.searchByNameSortedPowerAsc(kitchenAppliances, "test");
-        Assertions.assertIterableEquals(expected, result);
+        List<KitchenAppliance> result = manager.searchByNameSortedPowerAsc(kitchenAppliances, "Cake");
+        Assertions.assertEquals(true, result.get(0).getTypes().contains("Cake"));
+        Assertions.assertEquals(true, result.get(1).getTypes().contains("Cake"));
+
+        Assertions.assertEquals(600, result.get(0).getPower());
+        Assertions.assertEquals(1000, result.get(1).getPower());
     }
 
     @org.junit.jupiter.api.Test
     void searchByNameSortedPowerDesc() {
-        var ovenDishes = new ArrayList<String>();
-        ovenDishes.add("Cake");
-        Oven oven = new Oven("Oven 4000", 6500, 1000, ovenDishes);
+        List<KitchenAppliance> result = manager.searchByNameSortedPowerDesc(kitchenAppliances, "Cake");
+        Assertions.assertEquals(true, result.get(0).getTypes().contains("Cake"));
+        Assertions.assertEquals(true, result.get(1).getTypes().contains("Cake"));
 
-        var mixerDishes = new ArrayList<String>();
-        mixerDishes.add("Cookie");
-        mixerDishes.add("Cake");
-        Mixer mixer = new Mixer("Mixer-2000", 1200, 500, 1000, mixerDishes);
-
-        var foodProcessorDishes = new ArrayList<String>();
-        foodProcessorDishes.add("Cookie");
-        foodProcessorDishes.add("Cake");
-
-        FoodProcessor foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600, foodProcessorDishes);
-
-        var expected = new ArrayList<KitchenAppliance>();
-        expected.add(oven);
-        expected.add(foodProcessor);
-        expected.add(mixer);
-
-        Iterable<KitchenAppliance> result = manager.searchByNameSortedPowerDesc(kitchenAppliances, "Cake");
-        Assertions.assertIterableEquals(expected, result);
+        Assertions.assertEquals(1000, result.get(0).getPower());
+        Assertions.assertEquals(600, result.get(1).getPower());
     }
 
     @org.junit.jupiter.api.Test
     void sortingByPriceAsc() {
-        Iterable<KitchenAppliance> expected = new ArrayList<KitchenAppliance>();
-        Iterable<KitchenAppliance> result = manager.sortingByPriceAsc(kitchenAppliances);
-        Assertions.assertIterableEquals(expected, result);
+        List<KitchenAppliance> result = manager.sortingByPriceAsc(kitchenAppliances);
+        Assertions.assertEquals(1200, result.get(0).getPrice());
+        Assertions.assertEquals(2000, result.get(1).getPrice());
+        Assertions.assertEquals(6500, result.get(2).getPrice());
     }
 
     @org.junit.jupiter.api.Test
     void sortingByPriceDesc() {
-        Iterable<KitchenAppliance> expected = new ArrayList<KitchenAppliance>();
-        Iterable<KitchenAppliance> result = manager.sortingByPriceDesc(kitchenAppliances);
-        Assertions.assertIterableEquals(expected, result);
+
+        var result = manager.sortingByPriceDesc(kitchenAppliances);
+        Assertions.assertEquals(6500, result.get(0).getPrice());
+        Assertions.assertEquals(2000, result.get(1).getPrice());
+        Assertions.assertEquals(1200, result.get(2).getPrice());
     }
 }
