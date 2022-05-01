@@ -50,5 +50,7 @@ class OvenTest {
                 "Price - " + 6500 + "\n" +
                 "Power - " + 1000 + "\n" +
                 "Dish types - " + typeStr + "\n";
+
+        Assertions.assertEquals(showStr, oven.show());
     }
 }

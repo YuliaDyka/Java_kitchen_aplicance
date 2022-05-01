@@ -31,4 +31,13 @@ public class KitchenAppliance {
                 "Power - " + power + "\n" +
                 "Dish types - " + typesStr + "\n";
     }
+
+    public String getHeaders() {
+        return "Name, Price, Power, Dish types";
+    }
+
+    public String toCSV() {
+        var typesStr =  String.join("-", types);
+        return name + ", " + price + ", " + power + ", " + typesStr;
+    }
 }

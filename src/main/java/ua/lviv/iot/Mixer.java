@@ -22,4 +22,14 @@ public class Mixer extends KitchenAppliance {
                 "Speed - " + speed + "\n" +
                 "Dish types - " + typesStr + "\n";
     }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + ", Speed";
+    }
+
+    @Override
+    public String toCSV() {
+        return super.toCSV() + " " + speed;
+    }
 }
