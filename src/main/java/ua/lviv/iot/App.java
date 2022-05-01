@@ -13,8 +13,6 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) throws IOException {
-        System.out.println("-----Lab2------");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         var mixerDishes = new ArrayList<String>();
         mixerDishes.add("Cookie");
@@ -25,7 +23,8 @@ public class App
         foodProcessorDishes.add("Meet");
         Mixer mixer = new Mixer("Mixer-2000", 1200, 500, 1000, mixerDishes);
         Mixer mixer_2 = new Mixer("Mixer_home-235", 1000, 700, 1000, mixerDishes);
-        FoodProcessor foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600, foodProcessorDishes);
+        FoodProcessor foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600,
+                foodProcessorDishes);
         var ovenDishes = new ArrayList<String>();
         ovenDishes.add("Cookie");
         ovenDishes.add("Cake");
@@ -38,40 +37,10 @@ public class App
         kitchenAppliances.add(foodProcessor);
         kitchenAppliances.add(oven);
 
-        for(KitchenAppliance i: kitchenAppliances){
-            System.out.println(i.show());
-        } ;
-
-        Manager manager = new Manager();
-
-        System.out.println(" ----------------------------------------- " + "\n");
-        System.out.println("Please enter the name of the dish: ");
-        String typeDish = br.readLine();
-
-        List<KitchenAppliance> newSearchByName = manager.searchByNameSortedPowerAsc(kitchenAppliances, typeDish);
-        System.out.println("----Ascending by power----");
-        for(KitchenAppliance item: newSearchByName){
-            System.out.println(item.show());
-        }
-
-        System.out.println("----Descending by power----");
-        List<KitchenAppliance> sortByPowerDesc = manager.searchByNameSortedPowerDesc(kitchenAppliances, typeDish);
-        for(KitchenAppliance item: sortByPowerDesc){
-            System.out.println(item.show());
-        }
-
-        System.out.println("------------");
-        System.out.println("----Sorting by price ascend----");
-        List<KitchenAppliance> sortByPriceAscList = manager.sortingByPriceAsc(kitchenAppliances);
-
-        for(KitchenAppliance i: sortByPriceAscList) {
-            System.out.println(i.show());
-        }
-
-        System.out.println("------------");
-        System.out.println("----Sorting by price descend----");
-        List<KitchenAppliance> sortByPriceDesc = manager.sortingByPriceDesc(kitchenAppliances);
-        for(KitchenAppliance i: sortByPriceDesc) {
-            System.out.println(i.show());}
+        // -------------- WriterManager -----------------
+        System.out.println("-----Lab6------");
+        WriterManager writerManager = new WriterManager();
+        writerManager.writeCSV(kitchenAppliances);
+        System.out.println("----- Write to CSV done!!! ------");
     }
 }

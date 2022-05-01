@@ -18,7 +18,8 @@ class FoodProcessorTest {
         foodProcessorDishes.add("Cookie");
         foodProcessorDishes.add("Meet");
 
-        foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600, foodProcessorDishes);
+        foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600,
+                foodProcessorDishes);
     }
 
     @AfterEach

@@ -50,6 +50,8 @@ class MixerTest {
                 "Power - " + 500 + "\n" +
                 "Speed - " + 1000 + "\n" +
                 "Dish types - " + typeStr + "\n";
+
+        Assertions.assertEquals(showStr, mixer.show());
     }
 
 }
