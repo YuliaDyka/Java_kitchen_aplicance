@@ -1,9 +1,6 @@
 package ua.lviv.iot;
 
-import junit.framework.Assert;
 import org.junit.jupiter.api.Assertions;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -12,35 +12,18 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args ) throws IOException {
+    public static void main( String[] args ) throws IOException {  
 
-        var mixerDishes = new ArrayList<String>();
-        mixerDishes.add("Cookie");
-        mixerDishes.add("Cake");
-        var foodProcessorDishes = new ArrayList<String>();
-        foodProcessorDishes.add("Cookie");
-        foodProcessorDishes.add("Cake");
-        foodProcessorDishes.add("Meet");
-        Mixer mixer = new Mixer("Mixer-2000", 1200, 500, 1000, mixerDishes);
-        Mixer mixer_2 = new Mixer("Mixer_home-235", 1000, 700, 1000, mixerDishes);
-        FoodProcessor foodProcessor = new FoodProcessor("Food processor-3000", 2000, 600,
-                foodProcessorDishes);
-        var ovenDishes = new ArrayList<String>();
-        ovenDishes.add("Cookie");
-        ovenDishes.add("Cake");
-        ovenDishes.add("Chicken");
-        Oven oven = new Oven("Oven 4000", 6500, 1000, ovenDishes);
+        String str = "'Скриня' - 49°50'06.4\"N 23°59'41.9\"E\n" +
+                "'Форум' - 49°50'59.7\"N 24°01'20.3\"E\n" +
+                "'Метро' - 49°49'23.5\"N 23°54'58.3\"E";
 
-        ArrayList<KitchenAppliance> kitchenAppliances = new ArrayList<KitchenAppliance>();
-        kitchenAppliances.add(mixer);
-        kitchenAppliances.add(mixer_2);
-        kitchenAppliances.add(foodProcessor);
-        kitchenAppliances.add(oven);
+        StringManager stringManager = new StringManager();
+        List<String> resStrByRegularList = stringManager.getLocationStoreByRegular(str);
 
-        // -------------- WriterManager -----------------
-        System.out.println("-----Lab6------");
-        WriterManager writerManager = new WriterManager();
-        writerManager.writeCSV(kitchenAppliances);
-        System.out.println("----- Write to CSV done!!! ------");
+        System.out.println("----- Location stores by regulars ------");
+        for(String res: resStrByRegularList) {
+            System.out.println("loc: " + res);
+        }
     }
 }
